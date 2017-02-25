@@ -8,12 +8,12 @@ Parse git revision range for [nodegit].
 
 Supports the following format:
 
-- "<rev1>..<rev2>";
-- "<rev2> ^<rev1>";
-- "<rev1>...<rev2>";
-- "<rev>^@";
-- "<rev>^!";
-- "<rev>^-<nth parent>";
+- "&lt;rev1>..&lt;rev2>";
+- "&lt;rev2> ^&lt;rev1>";
+- "&lt;rev1>...&lt;rev2>";
+- "&lt;rev>^@";
+- "&lt;rev>^!";
+- "&lt;rev>^-&lt;nth parent>";
 
 
 ## Usage
