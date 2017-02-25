@@ -9,8 +9,8 @@
     "lint": "eslint src/ test/",
     "report-coverage": "npm run coverage && codecov",
     "test": "ava -vv && npm run lint",
-    "test:unit": "ava -vv",
-    "test:watch": "ava --watch"
+    "test-unit": "ava -vv",
+    "test-watch": "ava --watch"
   },
   "repository": {
     "type": "git",
