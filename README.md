@@ -48,7 +48,17 @@ git.Repository.open('.git').then(
 
 ## API
 
-TODO.
+- `gitRange.parse(repo: nodegit.Repository, revisions: string|string[]): Promise<Range,Error>`:
+
+  Parse a git revision range to a list of revision id to include or exclude (starts with "^").
+
+- `Range: string[]`
+
+  List of revision id to include or exclude (starts with "^").
+
+- `Range.prototype.commits({limit: number, sorting: number|number[]}): Promise<nodegit.Commit[],Error>`:
+
+  Resolve to the commits in the range.
 
 
 ## License
