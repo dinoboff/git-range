@@ -61,6 +61,11 @@ git.Repository.open('.git').then(
   Resolve to the commits in the range.
 
 
+## Known Issues
+
+Do not support triple dot range notation if there's more than one merge-base between the two revision.
+
+
 ## License
 
 MIT License
