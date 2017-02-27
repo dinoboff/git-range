@@ -29,15 +29,11 @@ git.Repository.open('.git').then(
   repo => range.parse(repo, ['HEAD^@', '^v1.0.0']).then(revisions => {
     // Equivalent output to "git rev-parse HEAD^@ ^v1.0.0^{commit}"
     console.log(revisions.join('\n'));
-
-    return revisions.getCommits();
-  }).then(
-    () => repo.free(),
-    e => {
-      repo.free();
-      console.error(e);
-    }
-  )
+    repo.free();
+  }).catch(e => {
+    repo.free();
+    console.error(e);
+  })
 );
 ```
 
