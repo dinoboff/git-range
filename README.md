@@ -4,37 +4,34 @@
 [![Coverage][codecov-badge]][codecov]
 [![bitHound Overall Score][bithound-badge]][bithound]
 
-Parse git revision range for [nodegit].
+Parse git revision ranges for [nodegit].
 
 Supports the following format:
 
-- "&lt;rev1>..&lt;rev2>";
-- "&lt;rev2> ^&lt;rev1>";
-- "&lt;rev1>...&lt;rev2>";
-- "&lt;rev>^@";
-- "&lt;rev>^!";
-- "&lt;rev>^-&lt;nth parent>";
+- `<rev1>..<rev2>`.
+- `<rev2> ^<rev1>`.
+- `<rev1>...<rev2>`.
+- `<rev>^@`.
+- `<rev>^!`.
+- `<rev>^-<nth parent>`.
 
 
 ## Usage
 
-[nodegit.Revparse] can parse single revision reference and [nodegit.Revwalk] only support two dot notation (via `pushRange(range)` or single revision. Even with single revison you need to know what its type (a commit sha, its shortname, a reference).
+[nodegit.Revparse] can parse single revision references and [nodegit.Revwalk] only support two dot notation ranges (via `pushRange(range)` or single revisions. Even with single revisons, you need to know what its type (a commit sha, its shortname, a reference).
 
-To parse a revision range and logs commits in the range:
-```
+With git-range, you can instead convert a range to a list of commit id; the revisions to exclude starts with "^":
+```js
 const git = require('nodegit');
 const range = require('git-range');
 
 git.Repository.open('.git').then(
   repo => range.parse(repo, ['HEAD^@', '^v1.0.0']).then(revisions => {
-    // Equivalent output to "git rev-parse HEAD^@ ^v1.0.0"
+    // Equivalent output to "git rev-parse HEAD^@ ^v1.0.0^{commit}"
     console.log(revisions.join('\n'));
 
     return revisions.getCommits();
   }).then(
-    // Equivalent output to "git log --oneline HEAD^@ ^v1.0.0"
-    commits => console.log(commits.map(c => c.summary()).join('\n'))
-  ).then(
     () => repo.free(),
     e => {
       repo.free();
@@ -42,7 +39,6 @@ git.Repository.open('.git').then(
     }
   )
 );
-
 ```
 
 
@@ -63,7 +59,7 @@ git.Repository.open('.git').then(
 
 ## Known Issues
 
-Do not support triple dot range notation if there's more than one merge-base between the two revision.
+Do not support triple dot range notation if there's more than one merge-bases between the two revisions.
 
 
 ## License
