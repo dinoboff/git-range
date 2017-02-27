@@ -5,20 +5,22 @@
 const git = require('nodegit');
 const range = require('../');
 
-git.Repository.open('.git').then(
-  repo => range.parse(repo, ['HEAD^@', '^v1.0.0']).then(revisions => {
-    // Equivalent output to "git rev-parse HEAD^@ ^v1.0.0"
+git.Repository.discover('.', 0, '')
+  .then(gitDir => git.Repository.open(gitDir))
+  .then(repo => range.parse(repo, ['HEAD^@', '^v0.1.0']).then(revisions => {
+    // Equivalent output to "git rev-parse HEAD^@ ^v0.1.0^commit"
+    console.log('Range:');
     console.log(revisions.join('\n'));
 
-    return revisions.getCommits();
-  }).then(
+    return revisions.commits();
+  }).then(commits => {
     // Equivalent output to "git log --oneline HEAD^@ ^v1.0.0"
-    commits => console.log(commits.map(c => c.summary()).join('\n'))
-  ).then(
+    console.log('Commits:');
+    commits.forEach(c => console.log(`${c.sha().slice(0, 7)} ${c.summary()}`));
+  }).then(
     () => repo.free(),
     e => {
       repo.free();
-      console.error(e);
+      return Promise.reject(e);
     }
-  )
-);
+  )).done();
