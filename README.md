@@ -48,6 +48,10 @@ git.Repository.open('.git').then(
 
   List of revision id to include or exclude (starts with "^").
 
+- `Range.prototype.walker(): nodegit.Revwalk`:
+
+  Create a Revwalk from the revision range.
+
 - `Range.prototype.commits({limit: number, sorting: number|number[]}): Promise<nodegit.Commit[],Error>`:
 
   Resolve to the commits in the range.
