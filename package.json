@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/dinoboff/git-range.git"
   },
-  "keywords": [],
+  "keywords": ["nodegit", "git", "revision range"],
   "author": {
     "name": "Damien Lebrun",
     "email": "dinoboff@hotmail.com"
