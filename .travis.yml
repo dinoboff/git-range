@@ -3,7 +3,7 @@ language: node_js
 node_js:
 - '6'
 before_script:
-- npm install nodegit@0.17
+- npm install nodegit@0.18
 - npm install
 script:
 - npm run report-coverage

@@ -61,7 +61,7 @@ git.Repository.open('.git').then(
 
 Using npm:
 ```
-npm install nodegit@0.17 --save
+npm install nodegit@0.18 --save
 npm install git-range --save
 ```
 

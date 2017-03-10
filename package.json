@@ -60,6 +60,6 @@
     "lodash.flatten": "^4.4.0"
   },
   "peerDependencies": {
-    "nodegit": "^0.17.0"
+    "nodegit": "^0.18.0"
   }
 }
