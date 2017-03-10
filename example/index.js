@@ -17,10 +17,4 @@ git.Repository.discover('.', 0, '')
     // Equivalent output to "git log --oneline HEAD^@ ^v1.0.0"
     console.log('Commits:');
     commits.forEach(c => console.log(`${c.sha().slice(0, 7)} ${c.summary()}`));
-  }).then(
-    () => repo.free(),
-    e => {
-      repo.free();
-      return Promise.reject(e);
-    }
-  )).done();
+  })).done();
