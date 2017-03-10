@@ -32,11 +32,7 @@ class Range extends Array {
       walker.sorting(...[].concat(sorting));
 
       resolve(walker);
-    }).then(walker => walker.getCommits(limit).then(commits => {
-      walker.free();
-
-      return commits;
-    }));
+    }).then(walker => walker.getCommits(limit));
   }
 
 }

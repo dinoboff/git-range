@@ -105,25 +105,17 @@ function parse(repo, revision) {
 }
 
 function peel(obj) {
-  let result;
-
   switch (obj.type()) {
 
   case 1:
-    result = Promise.resolve(obj.id());
-    break;
+    return Promise.resolve(obj.id());
 
   case 4:
-    result = obj.peel(1).then(peel);
-    break;
+    return obj.peel(1).then(peel);
 
   /* istanbul ignore next */
   default:
     throw Promise.reject(new Error('Unsuported type'));
 
   }
-
-  obj.free();
-
-  return result;
 }
