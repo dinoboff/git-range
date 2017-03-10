@@ -2,7 +2,7 @@ dist: trusty
 language: node_js
 node_js:
 - '6'
-before_script:
+install:
 - npm install nodegit@0.18
 - npm install
 script:
