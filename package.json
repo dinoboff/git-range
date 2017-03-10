@@ -57,7 +57,9 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "lodash.flatten": "^4.4.0",
+    "lodash.flatten": "^4.4.0"
+  },
+  "peerDependencies": {
     "nodegit": "^0.17.0"
   }
 }

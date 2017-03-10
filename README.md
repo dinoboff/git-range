@@ -57,6 +57,15 @@ git.Repository.open('.git').then(
   Resolve to the commits in the range.
 
 
+## Install
+
+Using npm:
+```
+npm install nodegit@0.17 --save
+npm install git-range --save
+```
+
+
 ## Known Issues
 
 Do not support triple dot range notation if there's more than one merge-bases between the two revisions.
